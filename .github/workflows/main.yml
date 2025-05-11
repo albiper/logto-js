@@ -25,10 +25,10 @@ jobs:
           pnpm-version: 9
 
       - name: Build
-        run: cd packages/fastify && pnpm install && pnpm build
+        run: pnpm -r build
 
       - name: Lint
-        run: cd packages/fastify && pnpm -r lint
+        run: pnpm -r lint
 
       - name: Test
         # The test script is moody
@@ -36,7 +36,7 @@ jobs:
         with: 
           timeout_minutes: 10
           max_attempts: 5
-          command: cd packages/fastify && pnpm test:coverage
+          command: pnpm -r --workspace-concurrency=0 test:coverage
   publish-gpr:
     needs: main
     runs-on: ubuntu-latest
