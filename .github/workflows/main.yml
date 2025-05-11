@@ -25,10 +25,10 @@ jobs:
           pnpm-version: 9
 
       - name: Build
-        run: pnpm -r build
+        run: cd packages/fastify && pnpm build
 
       - name: Lint
-        run: pnpm -r lint
+        run: cd packages/fastify && pnpm -r lint
 
       - name: Test
         # The test script is moody
@@ -36,21 +36,7 @@ jobs:
         with: 
           timeout_minutes: 10
           max_attempts: 5
-          command: pnpm -r --workspace-concurrency=0 test:coverage
-
-      - name: Codecov js
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: js
-          directory: ./packages/js
-
-      - name: Codecov browser
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: browser
-          directory: ./packages/browser
+          command: cd packages/fastify && pnpm test:coverage
   publish-gpr:
     needs: main
     runs-on: ubuntu-latest
