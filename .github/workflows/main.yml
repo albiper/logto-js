@@ -25,7 +25,7 @@ jobs:
           pnpm-version: 9
 
       - name: Build
-        run: cd packages/fastify && pnmp install && pnpm build
+        run: cd packages/fastify && pnpminstall && pnpm build
 
       - name: Lint
         run: cd packages/fastify && pnpm -r lint
