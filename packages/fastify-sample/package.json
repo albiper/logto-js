@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/albiper/logto-js"
+  },
   "scripts": {
     "precommit": "lint-staged",
     "start": "npm run build && node lib/app.js",
